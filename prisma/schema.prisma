@@ -1,0 +1,20 @@
+   generator client {
+    provider = "prisma-client"
+    output   = "../generated/prisma"
+}
+   
+    datasource db {
+    provider = "mysql"
+    }
+        
+    model Usuario{
+        id Int @id @default(autoincrement())
+        nombre String
+        apellidoPaterno String
+        apellidoMaterno String
+        matricula Int @unique
+        correo String @unique
+        password String
+        activo Boolean @default(true)
+        fechaCreacion DateTime @default(now())
+    }
