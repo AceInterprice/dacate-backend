@@ -66,11 +66,38 @@ export async function loginUsuario(data: login ) {
 
 }
 
-export async function getUsuarioByID(id: number){
-    return await primas.usuario.findUnique({
+export async function getUsuario(id: number){
+    const perfil = await primas.usuario.findUnique({
+        where: {
+            id: id
+        }, 
+        select: {
+            nombre: true,
+            apellidoPaterno: true,
+            apellidoMaterno: true,
+            matricula: true,
+            correo: true
+        }
+    })
+
+    if(!perfil){
+        throw new Error("Usuario no encontrado");
+    }
+
+    return perfil; 
+
+}
+
+
+export async function deleteUsuario(id: number){
+    const eliminar = await primas.usuario.delete({
         where: {
             id: id
         }
-    })
+    });
+    
+  return { message: "Usuario eliminado correctamente" };  
+
 }
+
 

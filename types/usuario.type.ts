@@ -11,3 +11,4 @@ export type login = {
     correo: string; 
     password: string;
 }
+

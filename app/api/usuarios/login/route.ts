@@ -19,7 +19,7 @@ export async function POST(req: NextRequest){
                 errors: validacion.error.issues.map(error => error.message)
             };
 
-            return Response.json(respuesta, { status: 400 });
+            return NextResponse.json(respuesta, { status: 400 });
         }
 
         // 3. Ejecutar login y generar JWT
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest){
             data: resultado.usuario
         };
 
-        return Response.json(respuesta, { status: 200 });
+        return NextResponse.json(respuesta, { status: 200 });
 
     } catch (error) {
         console.error("Error en login:", error);
@@ -53,6 +53,6 @@ export async function POST(req: NextRequest){
             message: "Error interno del servidor"
         };
 
-        return Response.json(respuesta, { status: 500 });
+        return NextResponse.json(respuesta, { status: 500 });
     }
 }

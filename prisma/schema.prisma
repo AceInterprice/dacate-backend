@@ -1,10 +1,15 @@
    generator client {
     provider = "prisma-client"
     output   = "../generated/prisma"
-}
+    }
    
     datasource db {
     provider = "mysql"
+    }   
+
+    enum Rol {
+        USUARIO
+        ADMIN
     }
         
     model Usuario{
@@ -17,4 +22,5 @@
         password String
         activo Boolean @default(true)
         fechaCreacion DateTime @default(now())
+        rol Rol @default(USUARIO)
     }
