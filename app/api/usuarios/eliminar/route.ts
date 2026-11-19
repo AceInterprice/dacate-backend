@@ -1,17 +1,22 @@
-import {NextRequest, NextResponse}  from 'next/server';
-import type {ApiResponse} from '@/types/response.type';
-import {deleteUsuario} from '@/services/usuario.service'; 
 
-type Context = {
-    params: Promise<{ id: string }>;
-};
+import { NextRequest, NextResponse } from "next/server";
+import { deleteUsuario } from "@/services/usuario.service";
 
-export async function DELETE({params}:Context) {
-    try{
-        const {id} = await params;
-        const usuarioId = Number(id); 
-        
-          if (!Number.isInteger(usuarioId) || usuarioId <= 0) {
+export async function DELETE(request: NextRequest) {
+    try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get("id");
+
+        if (!id) {
+            return NextResponse.json({
+                success: false,
+                message: "ID de usuario requerido"
+            }, { status: 400 });
+        }
+
+        const usuarioId = Number(id);
+
+        if (!Number.isInteger(usuarioId) || usuarioId <= 0) {
             return NextResponse.json({
                 success: false,
                 message: "ID de usuario inválido"
@@ -24,14 +29,13 @@ export async function DELETE({params}:Context) {
             success: true,
             message: "Usuario eliminado correctamente"
         }, { status: 200 });
-    }
-    catch(error){
-        console.error(error);
 
-        const respuesta: ApiResponse<null>={
-            success: false, 
-            message: "Error al eliminar al usuario"
-        }
-        return NextResponse.json(respuesta, { status: 500 });
+    } catch (error) {
+        console.error("ERROR DELETE:", error);
+
+        return NextResponse.json({
+            success: false,
+            message: error instanceof Error ? error.message : String(error)
+        }, { status: 500 });
     }
 }
