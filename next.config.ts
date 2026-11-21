@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "http://localhost:4173",
+            value: "https://decate-frontend.jonathanlopezuc.workers.dev",
           },
           //{ key: "Access-Control-Allow-Origin", value: "http://localhost:5173" },
           {
