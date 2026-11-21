@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Usuario: 'Usuario'
+  Usuario: 'Usuario',
+  Tarea: 'Tarea'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -86,6 +87,21 @@ export const UsuarioScalarFieldEnum = {
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
+export const TareaScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  materia: 'materia',
+  fechaEntrega: 'fechaEntrega',
+  hora: 'hora',
+  prioridad: 'prioridad',
+  estado: 'estado',
+  usuarioId: 'usuarioId'
+} as const
+
+export type TareaScalarFieldEnum = (typeof TareaScalarFieldEnum)[keyof typeof TareaScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -103,4 +119,12 @@ export const UsuarioOrderByRelevanceFieldEnum = {
 } as const
 
 export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
+
+
+export const TareaOrderByRelevanceFieldEnum = {
+  titulo: 'titulo',
+  descripcion: 'descripcion'
+} as const
+
+export type TareaOrderByRelevanceFieldEnum = (typeof TareaOrderByRelevanceFieldEnum)[keyof typeof TareaOrderByRelevanceFieldEnum]
 

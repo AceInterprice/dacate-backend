@@ -1,11 +1,13 @@
-import {NextRequest, NextResponse} from 'next/server';
-import type {ApiResponse} from '@/types/response.type';
-import {loginSchema} from '@/validations/usuario.validation'; 
-import {loginUsuario} from '@/services/usuario.service';
-import { cookies } from 'next/headers';
+import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
-export async function POST(req: NextRequest){
- try {
+import type { ApiResponse } from "@/types/response.type";
+import { loginSchema } from "@/validations/usuario.validation";
+import { loginUsuario } from "@/services/usuario.service";
+import { manejarError } from "@/lib/manejar-error";
+
+export async function POST(req: NextRequest) {
+    try {
         // 1. Recibir datos
         const body = await req.json();
 
@@ -16,7 +18,10 @@ export async function POST(req: NextRequest){
             const respuesta: ApiResponse<null> = {
                 success: false,
                 message: "Datos inválidos",
-                errors: validacion.error.issues.map(error => error.message)
+                errors: validacion.error.issues.map(error => ({
+                    campo: error.path.join("."),
+                    mensaje: error.message
+                }))
             };
 
             return NextResponse.json(respuesta, { status: 400 });
@@ -33,7 +38,7 @@ export async function POST(req: NextRequest){
             secure: process.env.NODE_ENV === "production",
             sameSite: "lax",
             path: "/",
-            maxAge: 60 * 60 * 24
+            maxAge: 60 * 60
         });
 
         // 5. Responder
@@ -46,13 +51,6 @@ export async function POST(req: NextRequest){
         return NextResponse.json(respuesta, { status: 200 });
 
     } catch (error) {
-        console.error("Error en login:", error);
-
-        const respuesta: ApiResponse<null> = {
-            success: false,
-            message: "Error interno del servidor"
-        };
-
-        return NextResponse.json(respuesta, { status: 500 });
+        return manejarError(error);
     }
 }

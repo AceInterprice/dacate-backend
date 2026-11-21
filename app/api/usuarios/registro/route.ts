@@ -1,11 +1,11 @@
-import {NextRequest, NextResponse} from 'next/server'; 
-import type {ApiResponse} from '@/types/response.type'; 
-import {resgistroSchema} from '@/validations/usuario.validation'; 
-import {registrarUsuario} from '@/services/usuario.service';
+import { NextRequest, NextResponse } from "next/server";
+import type { ApiResponse } from "@/types/response.type";
+import { resgistroSchema } from "@/validations/usuario.validation";
+import { registrarUsuario } from "@/services/usuario.service";
+import { manejarError } from "@/lib/manejar-error";
 
 export async function POST(req: NextRequest) {
-try {
-
+    try {
         // 1. Recibir los datos
         const body = await req.json();
 
@@ -13,20 +13,22 @@ try {
         const validacion = resgistroSchema.safeParse(body);
 
         if (!validacion.success) {
-
             const respuesta: ApiResponse<null> = {
                 success: false,
                 message: "Datos inválidos",
-                errors: validacion.error.issues.map(error => error.message)
+                errors: validacion.error.issues.map(error => ({
+                    campo: error.path.join("."),
+                    mensaje: error.message
+                }))
             };
 
             return NextResponse.json(respuesta, { status: 400 });
         }
 
         // 3. Ejecutar el service
-        const usuario = await registrarUsuario(validacion.data);
+        await registrarUsuario(validacion.data);
 
-        // 4. Construir la respuesta
+        // 4. Construir respuesta exitosa
         const respuesta: ApiResponse<null> = {
             success: true,
             message: "Usuario registrado correctamente"
@@ -35,14 +37,6 @@ try {
         return NextResponse.json(respuesta, { status: 201 });
 
     } catch (error) {
-
-        console.error("Error al registrar usuario:", error);
-
-        const respuesta: ApiResponse<null> = {
-            success: false,
-            message: "Error interno del servidor"
-        };
-
-        return NextResponse.json(respuesta, { status: 500 });
+        return manejarError(error);
     }
 }

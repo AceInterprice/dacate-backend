@@ -15,3 +15,32 @@ export const Rol = {
 } as const
 
 export type Rol = (typeof Rol)[keyof typeof Rol]
+
+
+export const Estado = {
+  Pendiente: 'Pendiente',
+  EnProceso: 'EnProceso',
+  Completado: 'Completado'
+} as const
+
+export type Estado = (typeof Estado)[keyof typeof Estado]
+
+
+export const Prioridad = {
+  Alta: 'Alta',
+  Media: 'Media',
+  Baja: 'Baja'
+} as const
+
+export type Prioridad = (typeof Prioridad)[keyof typeof Prioridad]
+
+
+export const Materia = {
+  Calculo: 'Calculo',
+  Programacion: 'Programacion',
+  Historia: 'Historia',
+  Electronica: 'Electronica',
+  Otra: 'Otra'
+} as const
+
+export type Materia = (typeof Materia)[keyof typeof Materia]

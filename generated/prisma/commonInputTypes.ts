@@ -129,6 +129,57 @@ export type EnumRolWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumRolFilter<$PrismaModel>
 }
 
+export type EnumMateriaFilter<$PrismaModel = never> = {
+  equals?: $Enums.Materia | Prisma.EnumMateriaFieldRefInput<$PrismaModel>
+  in?: $Enums.Materia[]
+  notIn?: $Enums.Materia[]
+  not?: Prisma.NestedEnumMateriaFilter<$PrismaModel> | $Enums.Materia
+}
+
+export type EnumPrioridadFilter<$PrismaModel = never> = {
+  equals?: $Enums.Prioridad | Prisma.EnumPrioridadFieldRefInput<$PrismaModel>
+  in?: $Enums.Prioridad[]
+  notIn?: $Enums.Prioridad[]
+  not?: Prisma.NestedEnumPrioridadFilter<$PrismaModel> | $Enums.Prioridad
+}
+
+export type EnumEstadoFilter<$PrismaModel = never> = {
+  equals?: $Enums.Estado | Prisma.EnumEstadoFieldRefInput<$PrismaModel>
+  in?: $Enums.Estado[]
+  notIn?: $Enums.Estado[]
+  not?: Prisma.NestedEnumEstadoFilter<$PrismaModel> | $Enums.Estado
+}
+
+export type EnumMateriaWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Materia | Prisma.EnumMateriaFieldRefInput<$PrismaModel>
+  in?: $Enums.Materia[]
+  notIn?: $Enums.Materia[]
+  not?: Prisma.NestedEnumMateriaWithAggregatesFilter<$PrismaModel> | $Enums.Materia
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMateriaFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMateriaFilter<$PrismaModel>
+}
+
+export type EnumPrioridadWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Prioridad | Prisma.EnumPrioridadFieldRefInput<$PrismaModel>
+  in?: $Enums.Prioridad[]
+  notIn?: $Enums.Prioridad[]
+  not?: Prisma.NestedEnumPrioridadWithAggregatesFilter<$PrismaModel> | $Enums.Prioridad
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPrioridadFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPrioridadFilter<$PrismaModel>
+}
+
+export type EnumEstadoWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Estado | Prisma.EnumEstadoFieldRefInput<$PrismaModel>
+  in?: $Enums.Estado[]
+  notIn?: $Enums.Estado[]
+  not?: Prisma.NestedEnumEstadoWithAggregatesFilter<$PrismaModel> | $Enums.Estado
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEstadoFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEstadoFilter<$PrismaModel>
+}
+
 export type NestedIntFilter<$PrismaModel = never> = {
   equals?: number | Prisma.IntFieldRefInput<$PrismaModel>
   in?: number[]
@@ -253,6 +304,57 @@ export type NestedEnumRolWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumRolFilter<$PrismaModel>
   _max?: Prisma.NestedEnumRolFilter<$PrismaModel>
+}
+
+export type NestedEnumMateriaFilter<$PrismaModel = never> = {
+  equals?: $Enums.Materia | Prisma.EnumMateriaFieldRefInput<$PrismaModel>
+  in?: $Enums.Materia[]
+  notIn?: $Enums.Materia[]
+  not?: Prisma.NestedEnumMateriaFilter<$PrismaModel> | $Enums.Materia
+}
+
+export type NestedEnumPrioridadFilter<$PrismaModel = never> = {
+  equals?: $Enums.Prioridad | Prisma.EnumPrioridadFieldRefInput<$PrismaModel>
+  in?: $Enums.Prioridad[]
+  notIn?: $Enums.Prioridad[]
+  not?: Prisma.NestedEnumPrioridadFilter<$PrismaModel> | $Enums.Prioridad
+}
+
+export type NestedEnumEstadoFilter<$PrismaModel = never> = {
+  equals?: $Enums.Estado | Prisma.EnumEstadoFieldRefInput<$PrismaModel>
+  in?: $Enums.Estado[]
+  notIn?: $Enums.Estado[]
+  not?: Prisma.NestedEnumEstadoFilter<$PrismaModel> | $Enums.Estado
+}
+
+export type NestedEnumMateriaWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Materia | Prisma.EnumMateriaFieldRefInput<$PrismaModel>
+  in?: $Enums.Materia[]
+  notIn?: $Enums.Materia[]
+  not?: Prisma.NestedEnumMateriaWithAggregatesFilter<$PrismaModel> | $Enums.Materia
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumMateriaFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumMateriaFilter<$PrismaModel>
+}
+
+export type NestedEnumPrioridadWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Prioridad | Prisma.EnumPrioridadFieldRefInput<$PrismaModel>
+  in?: $Enums.Prioridad[]
+  notIn?: $Enums.Prioridad[]
+  not?: Prisma.NestedEnumPrioridadWithAggregatesFilter<$PrismaModel> | $Enums.Prioridad
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPrioridadFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPrioridadFilter<$PrismaModel>
+}
+
+export type NestedEnumEstadoWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.Estado | Prisma.EnumEstadoFieldRefInput<$PrismaModel>
+  in?: $Enums.Estado[]
+  notIn?: $Enums.Estado[]
+  not?: Prisma.NestedEnumEstadoWithAggregatesFilter<$PrismaModel> | $Enums.Estado
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumEstadoFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumEstadoFilter<$PrismaModel>
 }
 
 

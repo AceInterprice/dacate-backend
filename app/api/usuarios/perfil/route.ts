@@ -1,27 +1,12 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import type { ApiResponse } from "@/types/response.type";
 import { getUsuario } from "@/services/usuario.service";
+import { obtenerUsuarioAutenticado } from "@/lib/auth";
+import { manejarError } from "@/lib/manejar-error";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
     try {
-        const { searchParams } = new URL(req.url);
-        const id = searchParams.get("id");
-
-        if (!id) {
-            return NextResponse.json({
-                success: false,
-                message: "ID de usuario requerido"
-            }, { status: 400 });
-        }
-
-        const usuarioId = Number(id);
-
-        if (!Number.isInteger(usuarioId) || usuarioId <= 0) {
-            return NextResponse.json({
-                success: false,
-                message: "ID de usuario inválido"
-            }, { status: 400 });
-        }
+        const usuarioId = await obtenerUsuarioAutenticado();
 
         const perfil = await getUsuario(usuarioId);
 
@@ -34,13 +19,6 @@ export async function GET(req: NextRequest) {
         return NextResponse.json(respuesta, { status: 200 });
 
     } catch (error) {
-        console.error(error);
-
-        const respuesta: ApiResponse<null> = {
-            success: false,
-            message: "Error al obtener el perfil"
-        };
-
-        return NextResponse.json(respuesta, { status: 500 });
+        return manejarError(error);
     }
 }

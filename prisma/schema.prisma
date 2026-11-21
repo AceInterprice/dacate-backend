@@ -23,4 +23,44 @@
         activo Boolean @default(true)
         fechaCreacion DateTime @default(now())
         rol Rol @default(USUARIO)
+
+        tareas Tarea[]
     }
+
+    enum Estado {
+        Pendiente
+        EnProceso
+        Completado
+    }
+
+    enum Prioridad {
+        Alta
+        Media
+        Baja
+    }
+
+    enum Materia {
+        Calculo
+        Programacion
+        Historia
+        Electronica
+        Otra
+    }
+
+    model Tarea {
+        id Int @id @default(autoincrement())
+        titulo String
+        descripcion String
+        materia Materia 
+        fechaEntrega DateTime @db.Date 
+        hora DateTime @db.Time(0)
+        prioridad Prioridad
+        estado Estado @default(Pendiente)
+
+        usuarioId Int
+        usuario Usuario @relation(fields: [usuarioId], references: [id])
+
+    }
+
+
+

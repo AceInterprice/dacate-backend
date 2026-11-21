@@ -397,7 +397,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Usuario: 'Usuario'
+  Usuario: 'Usuario',
+  Tarea: 'Tarea'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -413,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario"
+    modelProps: "usuario" | "tarea"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -483,6 +484,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Tarea: {
+      payload: Prisma.$TareaPayload<ExtArgs>
+      fields: Prisma.TareaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TareaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TareaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload>
+        }
+        findFirst: {
+          args: Prisma.TareaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TareaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload>
+        }
+        findMany: {
+          args: Prisma.TareaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload>[]
+        }
+        create: {
+          args: Prisma.TareaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload>
+        }
+        createMany: {
+          args: Prisma.TareaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.TareaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload>
+        }
+        update: {
+          args: Prisma.TareaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload>
+        }
+        deleteMany: {
+          args: Prisma.TareaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TareaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.TareaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TareaPayload>
+        }
+        aggregate: {
+          args: Prisma.TareaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTarea>
+        }
+        groupBy: {
+          args: Prisma.TareaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TareaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TareaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TareaCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -538,6 +605,21 @@ export const UsuarioScalarFieldEnum = {
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
+export const TareaScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  descripcion: 'descripcion',
+  materia: 'materia',
+  fechaEntrega: 'fechaEntrega',
+  hora: 'hora',
+  prioridad: 'prioridad',
+  estado: 'estado',
+  usuarioId: 'usuarioId'
+} as const
+
+export type TareaScalarFieldEnum = (typeof TareaScalarFieldEnum)[keyof typeof TareaScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -555,6 +637,14 @@ export const UsuarioOrderByRelevanceFieldEnum = {
 } as const
 
 export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
+
+
+export const TareaOrderByRelevanceFieldEnum = {
+  titulo: 'titulo',
+  descripcion: 'descripcion'
+} as const
+
+export type TareaOrderByRelevanceFieldEnum = (typeof TareaOrderByRelevanceFieldEnum)[keyof typeof TareaOrderByRelevanceFieldEnum]
 
 
 
@@ -595,6 +685,27 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'Rol'
  */
 export type EnumRolFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Rol'>
+    
+
+
+/**
+ * Reference to a field of type 'Materia'
+ */
+export type EnumMateriaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Materia'>
+    
+
+
+/**
+ * Reference to a field of type 'Prioridad'
+ */
+export type EnumPrioridadFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Prioridad'>
+    
+
+
+/**
+ * Reference to a field of type 'Estado'
+ */
+export type EnumEstadoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Estado'>
     
 
 
@@ -756,6 +867,7 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
   usuario?: Prisma.UsuarioOmit
+  tarea?: Prisma.TareaOmit
 }
 
 /* Types for Logging */

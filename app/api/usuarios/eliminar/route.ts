@@ -1,41 +1,28 @@
-
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { deleteUsuario } from "@/services/usuario.service";
+import { obtenerUsuarioAutenticado } from "@/lib/auth";
+import { cookies } from "next/headers";
+import { manejarError } from "@/lib/manejar-error";
 
-export async function DELETE(request: NextRequest) {
+export async function DELETE() {
     try {
-        const { searchParams } = new URL(request.url);
-        const id = searchParams.get("id");
+        // 1. Obtener ID del usuario autenticado
+        const usuarioId = await obtenerUsuarioAutenticado();
 
-        if (!id) {
-            return NextResponse.json({
-                success: false,
-                message: "ID de usuario requerido"
-            }, { status: 400 });
-        }
-
-        const usuarioId = Number(id);
-
-        if (!Number.isInteger(usuarioId) || usuarioId <= 0) {
-            return NextResponse.json({
-                success: false,
-                message: "ID de usuario inválido"
-            }, { status: 400 });
-        }
-
+        // 2. Eliminar usuario
         await deleteUsuario(usuarioId);
 
+        // 3. Eliminar cookie de sesión
+        const cookieStore = await cookies();
+        cookieStore.delete("session");
+
+        // 4. Responder
         return NextResponse.json({
             success: true,
             message: "Usuario eliminado correctamente"
         }, { status: 200 });
 
     } catch (error) {
-        console.error("ERROR DELETE:", error);
-
-        return NextResponse.json({
-            success: false,
-            message: error instanceof Error ? error.message : String(error)
-        }, { status: 500 });
+        return manejarError(error);
     }
 }
