@@ -37,6 +37,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(respuesta, { status: 201 });
 
     } catch (error) {
-        return manejarError(error);
+      //  return manejarError(error);
+      console.dir(error, { depth: null });
     }
 }
