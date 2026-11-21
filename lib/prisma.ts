@@ -14,7 +14,7 @@ console.log("Configuración DB:", {
 const adapter = new PrismaMariaDb({
   host: DB.hostname,
   port: Number(DB.port || 3306),
-  user: decodeURIComponent(DB.username),
+  user: `${decodeURIComponent(DB.username)}.${DB.hostname.split(".")[0]}`,
   password: decodeURIComponent(DB.password),
   database: decodeURIComponent(DB.pathname.slice(1)),
   connectionLimit: 5,
