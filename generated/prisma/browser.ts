@@ -27,3 +27,13 @@ export type Usuario = Prisma.UsuarioModel
  * 
  */
 export type Tarea = Prisma.TareaModel
+/**
+ * Model Examen
+ * 
+ */
+export type Examen = Prisma.ExamenModel
+/**
+ * Model Notificacion
+ * 
+ */
+export type Notificacion = Prisma.NotificacionModel

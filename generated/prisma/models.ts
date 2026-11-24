@@ -10,4 +10,6 @@
  */
 export type * from './models/Usuario'
 export type * from './models/Tarea'
+export type * from './models/Examen'
+export type * from './models/Notificacion'
 export type * from './commonInputTypes'

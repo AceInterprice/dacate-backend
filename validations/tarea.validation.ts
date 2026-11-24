@@ -1,10 +1,10 @@
 import z from "zod"; 
-import {Materia, Prioridad, Estado} from "@/generated/prisma/client"
+import { Prioridad, Estado} from "@/generated/prisma/client"
 
 export const crearTareaSchema = z.object({
     titulo: z.string().min(1, {message: "Titulo requerido"}),
     descripcion: z.string().optional(), 
-    materia: z.enum(Materia),
+    materia: z.string().min(1, {message: "Escriba una materia"}),
     fechaEntrega: z.coerce.date(),
     hora: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "La hora debe tener el formato HH:mm"),
     prioridad: z.enum(Prioridad), 

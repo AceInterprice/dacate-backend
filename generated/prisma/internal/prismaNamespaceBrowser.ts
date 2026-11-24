@@ -52,7 +52,9 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Usuario: 'Usuario',
-  Tarea: 'Tarea'
+  Tarea: 'Tarea',
+  Examen: 'Examen',
+  Notificacion: 'Notificacion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -81,7 +83,12 @@ export const UsuarioScalarFieldEnum = {
   password: 'password',
   activo: 'activo',
   fechaCreacion: 'fechaCreacion',
-  rol: 'rol'
+  rol: 'rol',
+  telefono: 'telefono',
+  universidad: 'universidad',
+  carrera: 'carrera',
+  semestre: 'semestre',
+  turno: 'turno'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
@@ -102,6 +109,33 @@ export const TareaScalarFieldEnum = {
 export type TareaScalarFieldEnum = (typeof TareaScalarFieldEnum)[keyof typeof TareaScalarFieldEnum]
 
 
+export const ExamenScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  materia: 'materia',
+  fecha: 'fecha',
+  hora: 'hora',
+  aula: 'aula',
+  temasEvaluar: 'temasEvaluar',
+  usuarioId: 'usuarioId'
+} as const
+
+export type ExamenScalarFieldEnum = (typeof ExamenScalarFieldEnum)[keyof typeof ExamenScalarFieldEnum]
+
+
+export const NotificacionScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  mensaje: 'mensaje',
+  leida: 'leida',
+  usuarioId: 'usuarioId',
+  tareaId: 'tareaId',
+  examenId: 'examenId'
+} as const
+
+export type NotificacionScalarFieldEnum = (typeof NotificacionScalarFieldEnum)[keyof typeof NotificacionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -115,7 +149,10 @@ export const UsuarioOrderByRelevanceFieldEnum = {
   apellidoPaterno: 'apellidoPaterno',
   apellidoMaterno: 'apellidoMaterno',
   correo: 'correo',
-  password: 'password'
+  password: 'password',
+  telefono: 'telefono',
+  universidad: 'universidad',
+  carrera: 'carrera'
 } as const
 
 export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
@@ -123,8 +160,35 @@ export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFi
 
 export const TareaOrderByRelevanceFieldEnum = {
   titulo: 'titulo',
-  descripcion: 'descripcion'
+  descripcion: 'descripcion',
+  materia: 'materia'
 } as const
 
 export type TareaOrderByRelevanceFieldEnum = (typeof TareaOrderByRelevanceFieldEnum)[keyof typeof TareaOrderByRelevanceFieldEnum]
+
+
+export const ExamenOrderByRelevanceFieldEnum = {
+  titulo: 'titulo',
+  materia: 'materia',
+  aula: 'aula',
+  temasEvaluar: 'temasEvaluar'
+} as const
+
+export type ExamenOrderByRelevanceFieldEnum = (typeof ExamenOrderByRelevanceFieldEnum)[keyof typeof ExamenOrderByRelevanceFieldEnum]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const NotificacionOrderByRelevanceFieldEnum = {
+  titulo: 'titulo',
+  mensaje: 'mensaje'
+} as const
+
+export type NotificacionOrderByRelevanceFieldEnum = (typeof NotificacionOrderByRelevanceFieldEnum)[keyof typeof NotificacionOrderByRelevanceFieldEnum]
 

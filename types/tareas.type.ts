@@ -1,9 +1,9 @@
-import type { Materia, Prioridad, Estado } from "@/generated/prisma/client";
+import type { Prioridad, Estado } from "@/generated/prisma/client";
 
 export type Tarea = {
     titulo: string;
     descripcion?: string;
-    materia: Materia;
+    materia: string;
     fechaEntrega: Date;
     hora: Date;
     prioridad: Prioridad;

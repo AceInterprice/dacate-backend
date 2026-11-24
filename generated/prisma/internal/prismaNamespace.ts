@@ -398,7 +398,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Usuario: 'Usuario',
-  Tarea: 'Tarea'
+  Tarea: 'Tarea',
+  Examen: 'Examen',
+  Notificacion: 'Notificacion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -414,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario" | "tarea"
+    modelProps: "usuario" | "tarea" | "examen" | "notificacion"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -550,6 +552,138 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Examen: {
+      payload: Prisma.$ExamenPayload<ExtArgs>
+      fields: Prisma.ExamenFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ExamenFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ExamenFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload>
+        }
+        findFirst: {
+          args: Prisma.ExamenFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ExamenFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload>
+        }
+        findMany: {
+          args: Prisma.ExamenFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload>[]
+        }
+        create: {
+          args: Prisma.ExamenCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload>
+        }
+        createMany: {
+          args: Prisma.ExamenCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.ExamenDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload>
+        }
+        update: {
+          args: Prisma.ExamenUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload>
+        }
+        deleteMany: {
+          args: Prisma.ExamenDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ExamenUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.ExamenUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ExamenPayload>
+        }
+        aggregate: {
+          args: Prisma.ExamenAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateExamen>
+        }
+        groupBy: {
+          args: Prisma.ExamenGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExamenGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ExamenCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ExamenCountAggregateOutputType> | number
+        }
+      }
+    }
+    Notificacion: {
+      payload: Prisma.$NotificacionPayload<ExtArgs>
+      fields: Prisma.NotificacionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.NotificacionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.NotificacionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload>
+        }
+        findFirst: {
+          args: Prisma.NotificacionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.NotificacionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload>
+        }
+        findMany: {
+          args: Prisma.NotificacionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload>[]
+        }
+        create: {
+          args: Prisma.NotificacionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload>
+        }
+        createMany: {
+          args: Prisma.NotificacionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.NotificacionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload>
+        }
+        update: {
+          args: Prisma.NotificacionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload>
+        }
+        deleteMany: {
+          args: Prisma.NotificacionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.NotificacionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.NotificacionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$NotificacionPayload>
+        }
+        aggregate: {
+          args: Prisma.NotificacionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateNotificacion>
+        }
+        groupBy: {
+          args: Prisma.NotificacionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificacionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.NotificacionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.NotificacionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -599,7 +733,12 @@ export const UsuarioScalarFieldEnum = {
   password: 'password',
   activo: 'activo',
   fechaCreacion: 'fechaCreacion',
-  rol: 'rol'
+  rol: 'rol',
+  telefono: 'telefono',
+  universidad: 'universidad',
+  carrera: 'carrera',
+  semestre: 'semestre',
+  turno: 'turno'
 } as const
 
 export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
@@ -620,6 +759,33 @@ export const TareaScalarFieldEnum = {
 export type TareaScalarFieldEnum = (typeof TareaScalarFieldEnum)[keyof typeof TareaScalarFieldEnum]
 
 
+export const ExamenScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  materia: 'materia',
+  fecha: 'fecha',
+  hora: 'hora',
+  aula: 'aula',
+  temasEvaluar: 'temasEvaluar',
+  usuarioId: 'usuarioId'
+} as const
+
+export type ExamenScalarFieldEnum = (typeof ExamenScalarFieldEnum)[keyof typeof ExamenScalarFieldEnum]
+
+
+export const NotificacionScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  mensaje: 'mensaje',
+  leida: 'leida',
+  usuarioId: 'usuarioId',
+  tareaId: 'tareaId',
+  examenId: 'examenId'
+} as const
+
+export type NotificacionScalarFieldEnum = (typeof NotificacionScalarFieldEnum)[keyof typeof NotificacionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -633,7 +799,10 @@ export const UsuarioOrderByRelevanceFieldEnum = {
   apellidoPaterno: 'apellidoPaterno',
   apellidoMaterno: 'apellidoMaterno',
   correo: 'correo',
-  password: 'password'
+  password: 'password',
+  telefono: 'telefono',
+  universidad: 'universidad',
+  carrera: 'carrera'
 } as const
 
 export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
@@ -641,10 +810,37 @@ export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFi
 
 export const TareaOrderByRelevanceFieldEnum = {
   titulo: 'titulo',
-  descripcion: 'descripcion'
+  descripcion: 'descripcion',
+  materia: 'materia'
 } as const
 
 export type TareaOrderByRelevanceFieldEnum = (typeof TareaOrderByRelevanceFieldEnum)[keyof typeof TareaOrderByRelevanceFieldEnum]
+
+
+export const ExamenOrderByRelevanceFieldEnum = {
+  titulo: 'titulo',
+  materia: 'materia',
+  aula: 'aula',
+  temasEvaluar: 'temasEvaluar'
+} as const
+
+export type ExamenOrderByRelevanceFieldEnum = (typeof ExamenOrderByRelevanceFieldEnum)[keyof typeof ExamenOrderByRelevanceFieldEnum]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const NotificacionOrderByRelevanceFieldEnum = {
+  titulo: 'titulo',
+  mensaje: 'mensaje'
+} as const
+
+export type NotificacionOrderByRelevanceFieldEnum = (typeof NotificacionOrderByRelevanceFieldEnum)[keyof typeof NotificacionOrderByRelevanceFieldEnum]
 
 
 
@@ -689,9 +885,9 @@ export type EnumRolFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'Materia'
+ * Reference to a field of type 'Turno'
  */
-export type EnumMateriaFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Materia'>
+export type EnumTurnoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Turno'>
     
 
 
@@ -868,6 +1064,8 @@ export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaC
 export type GlobalOmitConfig = {
   usuario?: Prisma.UsuarioOmit
   tarea?: Prisma.TareaOmit
+  examen?: Prisma.ExamenOmit
+  notificacion?: Prisma.NotificacionOmit
 }
 
 /* Types for Logging */

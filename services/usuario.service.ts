@@ -3,7 +3,7 @@ import type { Registro, login } from '@/types/usuario.type';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { AppError } from '@/lib/app-error';
-import { Prisma } from "@/generated/prisma/client";
+import { Prisma, Turno} from "@/generated/prisma/client";
 
 export async function registrarUsuario(data: Registro) {
     try {
@@ -15,6 +15,11 @@ export async function registrarUsuario(data: Registro) {
                 apellidoPaterno: data.apellidoPaterno,
                 apellidoMaterno: data.apellidoMaterno,
                 matricula: data.matricula,
+                telefono: data.telefono,
+                universidad: data.universidad,
+                carrera: data.carrera,
+                semestre: data.semestre,
+                turno: data.turno,
                 correo: data.correo,
                 password: passwordHash
             }
@@ -34,7 +39,7 @@ export async function registrarUsuario(data: Registro) {
             error.code === "P2002"
         ) {
             throw new AppError(
-                "El correo o la matrícula ya están registrados",
+                "El correo, matrícula o teléfono ya están registrados",
                 409
             );
         }
@@ -96,6 +101,11 @@ export async function getUsuario(id: number){
             nombre: true,
             apellidoPaterno: true,
             apellidoMaterno: true,
+            telefono: true,
+            universidad: true,
+            carrera: true,
+            semestre: true,
+            turno: true,
             matricula: true,
             correo: true
         }
@@ -109,6 +119,58 @@ export async function getUsuario(id: number){
 
 }
 
+export type UsuarioActualizar = Partial<{
+    semestre: number;
+    telefono: string;
+    turno: Turno;
+    carrera: string;
+}>;
+
+export async function actualizarPerfilUsuario(
+    usuarioID: number,
+    data: UsuarioActualizar
+) {
+    try {
+        const usuario = await primas.usuario.update({
+            where: {
+                id: usuarioID
+            },
+            data,
+            select: {
+                id: true,
+                nombre: true,
+                apellidoPaterno: true,
+                apellidoMaterno: true,
+                matricula: true,
+                correo: true,
+                telefono: true,
+                universidad: true,
+                carrera: true,
+                semestre: true,
+                turno: true
+            }
+        });
+
+        return usuario;
+
+    } catch (error) {
+        if (
+            error instanceof Prisma.PrismaClientKnownRequestError &&
+            error.code === "P2025"
+        ) {
+            throw new AppError("Usuario no encontrado", 404);
+        }
+
+        if (
+            error instanceof Prisma.PrismaClientKnownRequestError &&
+            error.code === "P2002"
+        ) {
+            throw new AppError("El teléfono ya está registrado", 409);
+        }
+
+        throw error;
+    }
+}
 
 export async function deleteUsuario(id: number) {
     try {

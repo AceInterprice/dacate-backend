@@ -17,6 +17,14 @@ export const Rol = {
 export type Rol = (typeof Rol)[keyof typeof Rol]
 
 
+export const Turno = {
+  MATUTINO: 'MATUTINO',
+  VESPERTINO: 'VESPERTINO'
+} as const
+
+export type Turno = (typeof Turno)[keyof typeof Turno]
+
+
 export const Estado = {
   Pendiente: 'Pendiente',
   EnProceso: 'EnProceso',
@@ -33,14 +41,3 @@ export const Prioridad = {
 } as const
 
 export type Prioridad = (typeof Prioridad)[keyof typeof Prioridad]
-
-
-export const Materia = {
-  Calculo: 'Calculo',
-  Programacion: 'Programacion',
-  Historia: 'Historia',
-  Electronica: 'Electronica',
-  Otra: 'Otra'
-} as const
-
-export type Materia = (typeof Materia)[keyof typeof Materia]

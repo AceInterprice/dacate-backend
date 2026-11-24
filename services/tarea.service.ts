@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { AppError } from "@/lib/app-error";
 import { Prisma } from "@/generated/prisma/client";
 import type { Tarea } from "@/types/tareas.type";
-import type { Materia, Prioridad } from "@/generated/prisma/client";
+import type { Prioridad } from "@/generated/prisma/client";
 
 export type CrearTarea = Omit<Tarea, "usuarioId" | "hora"> & {
     hora: string;
@@ -34,13 +34,11 @@ export async function crearTarea(data: CrearTarea, usuarioID: number) {
 
 export async function getTareas(
     usuarioID: number,
-    materia?: Materia,
     prioridad?: Prioridad
 ) {
     const tareas = await prisma.tarea.findMany({
         where: {
             usuarioId: usuarioID,
-            ...(materia && { materia }),
             ...(prioridad && { prioridad })
         }
     });

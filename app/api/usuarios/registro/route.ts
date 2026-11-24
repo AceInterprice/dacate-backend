@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { ApiResponse } from "@/types/response.type";
-import { resgistroSchema } from "@/validations/usuario.validation";
+import { registroSchema } from "@/validations/usuario.validation";
 import { registrarUsuario } from "@/services/usuario.service";
 import { manejarError } from "@/lib/manejar-error";
 
@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
 
         // 2. Validar los datos con Zod
-        const validacion = resgistroSchema.safeParse(body);
+        const validacion = registroSchema.safeParse(body);
 
         if (!validacion.success) {
             const respuesta: ApiResponse<null> = {

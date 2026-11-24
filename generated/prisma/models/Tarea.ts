@@ -40,7 +40,7 @@ export type TareaMinAggregateOutputType = {
   id: number | null
   titulo: string | null
   descripcion: string | null
-  materia: $Enums.Materia | null
+  materia: string | null
   fechaEntrega: Date | null
   hora: Date | null
   prioridad: $Enums.Prioridad | null
@@ -52,7 +52,7 @@ export type TareaMaxAggregateOutputType = {
   id: number | null
   titulo: string | null
   descripcion: string | null
-  materia: $Enums.Materia | null
+  materia: string | null
   fechaEntrega: Date | null
   hora: Date | null
   prioridad: $Enums.Prioridad | null
@@ -211,7 +211,7 @@ export type TareaGroupByOutputType = {
   id: number
   titulo: string
   descripcion: string
-  materia: $Enums.Materia
+  materia: string
   fechaEntrega: Date
   hora: Date
   prioridad: $Enums.Prioridad
@@ -246,13 +246,14 @@ export type TareaWhereInput = {
   id?: Prisma.IntFilter<"Tarea"> | number
   titulo?: Prisma.StringFilter<"Tarea"> | string
   descripcion?: Prisma.StringFilter<"Tarea"> | string
-  materia?: Prisma.EnumMateriaFilter<"Tarea"> | $Enums.Materia
+  materia?: Prisma.StringFilter<"Tarea"> | string
   fechaEntrega?: Prisma.DateTimeFilter<"Tarea"> | Date | string
   hora?: Prisma.DateTimeFilter<"Tarea"> | Date | string
   prioridad?: Prisma.EnumPrioridadFilter<"Tarea"> | $Enums.Prioridad
   estado?: Prisma.EnumEstadoFilter<"Tarea"> | $Enums.Estado
   usuarioId?: Prisma.IntFilter<"Tarea"> | number
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
+  notificacion?: Prisma.NotificacionListRelationFilter
 }
 
 export type TareaOrderByWithRelationInput = {
@@ -266,6 +267,7 @@ export type TareaOrderByWithRelationInput = {
   estado?: Prisma.SortOrder
   usuarioId?: Prisma.SortOrder
   usuario?: Prisma.UsuarioOrderByWithRelationInput
+  notificacion?: Prisma.NotificacionOrderByRelationAggregateInput
   _relevance?: Prisma.TareaOrderByRelevanceInput
 }
 
@@ -276,13 +278,14 @@ export type TareaWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.TareaWhereInput | Prisma.TareaWhereInput[]
   titulo?: Prisma.StringFilter<"Tarea"> | string
   descripcion?: Prisma.StringFilter<"Tarea"> | string
-  materia?: Prisma.EnumMateriaFilter<"Tarea"> | $Enums.Materia
+  materia?: Prisma.StringFilter<"Tarea"> | string
   fechaEntrega?: Prisma.DateTimeFilter<"Tarea"> | Date | string
   hora?: Prisma.DateTimeFilter<"Tarea"> | Date | string
   prioridad?: Prisma.EnumPrioridadFilter<"Tarea"> | $Enums.Prioridad
   estado?: Prisma.EnumEstadoFilter<"Tarea"> | $Enums.Estado
   usuarioId?: Prisma.IntFilter<"Tarea"> | number
   usuario?: Prisma.XOR<Prisma.UsuarioScalarRelationFilter, Prisma.UsuarioWhereInput>
+  notificacion?: Prisma.NotificacionListRelationFilter
 }, "id">
 
 export type TareaOrderByWithAggregationInput = {
@@ -309,7 +312,7 @@ export type TareaScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Tarea"> | number
   titulo?: Prisma.StringWithAggregatesFilter<"Tarea"> | string
   descripcion?: Prisma.StringWithAggregatesFilter<"Tarea"> | string
-  materia?: Prisma.EnumMateriaWithAggregatesFilter<"Tarea"> | $Enums.Materia
+  materia?: Prisma.StringWithAggregatesFilter<"Tarea"> | string
   fechaEntrega?: Prisma.DateTimeWithAggregatesFilter<"Tarea"> | Date | string
   hora?: Prisma.DateTimeWithAggregatesFilter<"Tarea"> | Date | string
   prioridad?: Prisma.EnumPrioridadWithAggregatesFilter<"Tarea"> | $Enums.Prioridad
@@ -320,54 +323,58 @@ export type TareaScalarWhereWithAggregatesInput = {
 export type TareaCreateInput = {
   titulo: string
   descripcion: string
-  materia: $Enums.Materia
+  materia: string
   fechaEntrega: Date | string
   hora: Date | string
   prioridad: $Enums.Prioridad
   estado?: $Enums.Estado
   usuario: Prisma.UsuarioCreateNestedOneWithoutTareasInput
+  notificacion?: Prisma.NotificacionCreateNestedManyWithoutTareaInput
 }
 
 export type TareaUncheckedCreateInput = {
   id?: number
   titulo: string
   descripcion: string
-  materia: $Enums.Materia
+  materia: string
   fechaEntrega: Date | string
   hora: Date | string
   prioridad: $Enums.Prioridad
   estado?: $Enums.Estado
   usuarioId: number
+  notificacion?: Prisma.NotificacionUncheckedCreateNestedManyWithoutTareaInput
 }
 
 export type TareaUpdateInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.StringFieldUpdateOperationsInput | string
-  materia?: Prisma.EnumMateriaFieldUpdateOperationsInput | $Enums.Materia
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
   fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
   estado?: Prisma.EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
   usuario?: Prisma.UsuarioUpdateOneRequiredWithoutTareasNestedInput
+  notificacion?: Prisma.NotificacionUpdateManyWithoutTareaNestedInput
 }
 
 export type TareaUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.StringFieldUpdateOperationsInput | string
-  materia?: Prisma.EnumMateriaFieldUpdateOperationsInput | $Enums.Materia
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
   fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
   estado?: Prisma.EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
   usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+  notificacion?: Prisma.NotificacionUncheckedUpdateManyWithoutTareaNestedInput
 }
 
 export type TareaCreateManyInput = {
   id?: number
   titulo: string
   descripcion: string
-  materia: $Enums.Materia
+  materia: string
   fechaEntrega: Date | string
   hora: Date | string
   prioridad: $Enums.Prioridad
@@ -378,7 +385,7 @@ export type TareaCreateManyInput = {
 export type TareaUpdateManyMutationInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.StringFieldUpdateOperationsInput | string
-  materia?: Prisma.EnumMateriaFieldUpdateOperationsInput | $Enums.Materia
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
   fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
@@ -389,7 +396,7 @@ export type TareaUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.StringFieldUpdateOperationsInput | string
-  materia?: Prisma.EnumMateriaFieldUpdateOperationsInput | $Enums.Materia
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
   fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
@@ -459,6 +466,11 @@ export type TareaSumOrderByAggregateInput = {
   usuarioId?: Prisma.SortOrder
 }
 
+export type TareaNullableScalarRelationFilter = {
+  is?: Prisma.TareaWhereInput | null
+  isNot?: Prisma.TareaWhereInput | null
+}
+
 export type TareaCreateNestedManyWithoutUsuarioInput = {
   create?: Prisma.XOR<Prisma.TareaCreateWithoutUsuarioInput, Prisma.TareaUncheckedCreateWithoutUsuarioInput> | Prisma.TareaCreateWithoutUsuarioInput[] | Prisma.TareaUncheckedCreateWithoutUsuarioInput[]
   connectOrCreate?: Prisma.TareaCreateOrConnectWithoutUsuarioInput | Prisma.TareaCreateOrConnectWithoutUsuarioInput[]
@@ -501,10 +513,6 @@ export type TareaUncheckedUpdateManyWithoutUsuarioNestedInput = {
   deleteMany?: Prisma.TareaScalarWhereInput | Prisma.TareaScalarWhereInput[]
 }
 
-export type EnumMateriaFieldUpdateOperationsInput = {
-  set?: $Enums.Materia
-}
-
 export type EnumPrioridadFieldUpdateOperationsInput = {
   set?: $Enums.Prioridad
 }
@@ -513,25 +521,43 @@ export type EnumEstadoFieldUpdateOperationsInput = {
   set?: $Enums.Estado
 }
 
+export type TareaCreateNestedOneWithoutNotificacionInput = {
+  create?: Prisma.XOR<Prisma.TareaCreateWithoutNotificacionInput, Prisma.TareaUncheckedCreateWithoutNotificacionInput>
+  connectOrCreate?: Prisma.TareaCreateOrConnectWithoutNotificacionInput
+  connect?: Prisma.TareaWhereUniqueInput
+}
+
+export type TareaUpdateOneWithoutNotificacionNestedInput = {
+  create?: Prisma.XOR<Prisma.TareaCreateWithoutNotificacionInput, Prisma.TareaUncheckedCreateWithoutNotificacionInput>
+  connectOrCreate?: Prisma.TareaCreateOrConnectWithoutNotificacionInput
+  upsert?: Prisma.TareaUpsertWithoutNotificacionInput
+  disconnect?: Prisma.TareaWhereInput | boolean
+  delete?: Prisma.TareaWhereInput | boolean
+  connect?: Prisma.TareaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TareaUpdateToOneWithWhereWithoutNotificacionInput, Prisma.TareaUpdateWithoutNotificacionInput>, Prisma.TareaUncheckedUpdateWithoutNotificacionInput>
+}
+
 export type TareaCreateWithoutUsuarioInput = {
   titulo: string
   descripcion: string
-  materia: $Enums.Materia
+  materia: string
   fechaEntrega: Date | string
   hora: Date | string
   prioridad: $Enums.Prioridad
   estado?: $Enums.Estado
+  notificacion?: Prisma.NotificacionCreateNestedManyWithoutTareaInput
 }
 
 export type TareaUncheckedCreateWithoutUsuarioInput = {
   id?: number
   titulo: string
   descripcion: string
-  materia: $Enums.Materia
+  materia: string
   fechaEntrega: Date | string
   hora: Date | string
   prioridad: $Enums.Prioridad
   estado?: $Enums.Estado
+  notificacion?: Prisma.NotificacionUncheckedCreateNestedManyWithoutTareaInput
 }
 
 export type TareaCreateOrConnectWithoutUsuarioInput = {
@@ -567,7 +593,7 @@ export type TareaScalarWhereInput = {
   id?: Prisma.IntFilter<"Tarea"> | number
   titulo?: Prisma.StringFilter<"Tarea"> | string
   descripcion?: Prisma.StringFilter<"Tarea"> | string
-  materia?: Prisma.EnumMateriaFilter<"Tarea"> | $Enums.Materia
+  materia?: Prisma.StringFilter<"Tarea"> | string
   fechaEntrega?: Prisma.DateTimeFilter<"Tarea"> | Date | string
   hora?: Prisma.DateTimeFilter<"Tarea"> | Date | string
   prioridad?: Prisma.EnumPrioridadFilter<"Tarea"> | $Enums.Prioridad
@@ -575,11 +601,73 @@ export type TareaScalarWhereInput = {
   usuarioId?: Prisma.IntFilter<"Tarea"> | number
 }
 
+export type TareaCreateWithoutNotificacionInput = {
+  titulo: string
+  descripcion: string
+  materia: string
+  fechaEntrega: Date | string
+  hora: Date | string
+  prioridad: $Enums.Prioridad
+  estado?: $Enums.Estado
+  usuario: Prisma.UsuarioCreateNestedOneWithoutTareasInput
+}
+
+export type TareaUncheckedCreateWithoutNotificacionInput = {
+  id?: number
+  titulo: string
+  descripcion: string
+  materia: string
+  fechaEntrega: Date | string
+  hora: Date | string
+  prioridad: $Enums.Prioridad
+  estado?: $Enums.Estado
+  usuarioId: number
+}
+
+export type TareaCreateOrConnectWithoutNotificacionInput = {
+  where: Prisma.TareaWhereUniqueInput
+  create: Prisma.XOR<Prisma.TareaCreateWithoutNotificacionInput, Prisma.TareaUncheckedCreateWithoutNotificacionInput>
+}
+
+export type TareaUpsertWithoutNotificacionInput = {
+  update: Prisma.XOR<Prisma.TareaUpdateWithoutNotificacionInput, Prisma.TareaUncheckedUpdateWithoutNotificacionInput>
+  create: Prisma.XOR<Prisma.TareaCreateWithoutNotificacionInput, Prisma.TareaUncheckedCreateWithoutNotificacionInput>
+  where?: Prisma.TareaWhereInput
+}
+
+export type TareaUpdateToOneWithWhereWithoutNotificacionInput = {
+  where?: Prisma.TareaWhereInput
+  data: Prisma.XOR<Prisma.TareaUpdateWithoutNotificacionInput, Prisma.TareaUncheckedUpdateWithoutNotificacionInput>
+}
+
+export type TareaUpdateWithoutNotificacionInput = {
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
+  fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
+  estado?: Prisma.EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  usuario?: Prisma.UsuarioUpdateOneRequiredWithoutTareasNestedInput
+}
+
+export type TareaUncheckedUpdateWithoutNotificacionInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  titulo?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion?: Prisma.StringFieldUpdateOperationsInput | string
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
+  fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
+  estado?: Prisma.EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  usuarioId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
 export type TareaCreateManyUsuarioInput = {
   id?: number
   titulo: string
   descripcion: string
-  materia: $Enums.Materia
+  materia: string
   fechaEntrega: Date | string
   hora: Date | string
   prioridad: $Enums.Prioridad
@@ -589,35 +677,66 @@ export type TareaCreateManyUsuarioInput = {
 export type TareaUpdateWithoutUsuarioInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.StringFieldUpdateOperationsInput | string
-  materia?: Prisma.EnumMateriaFieldUpdateOperationsInput | $Enums.Materia
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
   fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
   estado?: Prisma.EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  notificacion?: Prisma.NotificacionUpdateManyWithoutTareaNestedInput
 }
 
 export type TareaUncheckedUpdateWithoutUsuarioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.StringFieldUpdateOperationsInput | string
-  materia?: Prisma.EnumMateriaFieldUpdateOperationsInput | $Enums.Materia
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
   fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
   estado?: Prisma.EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  notificacion?: Prisma.NotificacionUncheckedUpdateManyWithoutTareaNestedInput
 }
 
 export type TareaUncheckedUpdateManyWithoutUsuarioInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.StringFieldUpdateOperationsInput | string
-  materia?: Prisma.EnumMateriaFieldUpdateOperationsInput | $Enums.Materia
+  materia?: Prisma.StringFieldUpdateOperationsInput | string
   fechaEntrega?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   prioridad?: Prisma.EnumPrioridadFieldUpdateOperationsInput | $Enums.Prioridad
   estado?: Prisma.EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
 }
 
+
+/**
+ * Count Type TareaCountOutputType
+ */
+
+export type TareaCountOutputType = {
+  notificacion: number
+}
+
+export type TareaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  notificacion?: boolean | TareaCountOutputTypeCountNotificacionArgs
+}
+
+/**
+ * TareaCountOutputType without action
+ */
+export type TareaCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TareaCountOutputType
+   */
+  select?: Prisma.TareaCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * TareaCountOutputType without action
+ */
+export type TareaCountOutputTypeCountNotificacionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.NotificacionWhereInput
+}
 
 
 export type TareaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -631,6 +750,8 @@ export type TareaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   estado?: boolean
   usuarioId?: boolean
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
+  notificacion?: boolean | Prisma.Tarea$notificacionArgs<ExtArgs>
+  _count?: boolean | Prisma.TareaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["tarea"]>
 
 
@@ -650,18 +771,21 @@ export type TareaSelectScalar = {
 export type TareaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "descripcion" | "materia" | "fechaEntrega" | "hora" | "prioridad" | "estado" | "usuarioId", ExtArgs["result"]["tarea"]>
 export type TareaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   usuario?: boolean | Prisma.UsuarioDefaultArgs<ExtArgs>
+  notificacion?: boolean | Prisma.Tarea$notificacionArgs<ExtArgs>
+  _count?: boolean | Prisma.TareaCountOutputTypeDefaultArgs<ExtArgs>
 }
 
 export type $TareaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Tarea"
   objects: {
     usuario: Prisma.$UsuarioPayload<ExtArgs>
+    notificacion: Prisma.$NotificacionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     titulo: string
     descripcion: string
-    materia: $Enums.Materia
+    materia: string
     fechaEntrega: Date
     hora: Date
     prioridad: $Enums.Prioridad
@@ -1008,6 +1132,7 @@ readonly fields: TareaFieldRefs;
 export interface Prisma__TareaClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   usuario<T extends Prisma.UsuarioDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UsuarioDefaultArgs<ExtArgs>>): Prisma.Prisma__UsuarioClient<runtime.Types.Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  notificacion<T extends Prisma.Tarea$notificacionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Tarea$notificacionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1040,7 +1165,7 @@ export interface TareaFieldRefs {
   readonly id: Prisma.FieldRef<"Tarea", 'Int'>
   readonly titulo: Prisma.FieldRef<"Tarea", 'String'>
   readonly descripcion: Prisma.FieldRef<"Tarea", 'String'>
-  readonly materia: Prisma.FieldRef<"Tarea", 'Materia'>
+  readonly materia: Prisma.FieldRef<"Tarea", 'String'>
   readonly fechaEntrega: Prisma.FieldRef<"Tarea", 'DateTime'>
   readonly hora: Prisma.FieldRef<"Tarea", 'DateTime'>
   readonly prioridad: Prisma.FieldRef<"Tarea", 'Prioridad'>
@@ -1391,6 +1516,30 @@ export type TareaDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Limit how many Tareas to delete.
    */
   limit?: number
+}
+
+/**
+ * Tarea.notificacion
+ */
+export type Tarea$notificacionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Notificacion
+   */
+  select?: Prisma.NotificacionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Notificacion
+   */
+  omit?: Prisma.NotificacionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.NotificacionInclude<ExtArgs> | null
+  where?: Prisma.NotificacionWhereInput
+  orderBy?: Prisma.NotificacionOrderByWithRelationInput | Prisma.NotificacionOrderByWithRelationInput[]
+  cursor?: Prisma.NotificacionWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.NotificacionScalarFieldEnum | Prisma.NotificacionScalarFieldEnum[]
 }
 
 /**
