@@ -307,6 +307,7 @@ export type UsuarioWhereInput = {
   tareas?: Prisma.TareaListRelationFilter
   examen?: Prisma.ExamenListRelationFilter
   notificacion?: Prisma.NotificacionListRelationFilter
+  recuperaciones?: Prisma.RecuperacionPasswordListRelationFilter
 }
 
 export type UsuarioOrderByWithRelationInput = {
@@ -328,6 +329,7 @@ export type UsuarioOrderByWithRelationInput = {
   tareas?: Prisma.TareaOrderByRelationAggregateInput
   examen?: Prisma.ExamenOrderByRelationAggregateInput
   notificacion?: Prisma.NotificacionOrderByRelationAggregateInput
+  recuperaciones?: Prisma.RecuperacionPasswordOrderByRelationAggregateInput
   _relevance?: Prisma.UsuarioOrderByRelevanceInput
 }
 
@@ -353,6 +355,7 @@ export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   tareas?: Prisma.TareaListRelationFilter
   examen?: Prisma.ExamenListRelationFilter
   notificacion?: Prisma.NotificacionListRelationFilter
+  recuperaciones?: Prisma.RecuperacionPasswordListRelationFilter
 }, "id" | "matricula" | "correo" | "telefono">
 
 export type UsuarioOrderByWithAggregationInput = {
@@ -417,6 +420,7 @@ export type UsuarioCreateInput = {
   tareas?: Prisma.TareaCreateNestedManyWithoutUsuarioInput
   examen?: Prisma.ExamenCreateNestedManyWithoutUsuarioInput
   notificacion?: Prisma.NotificacionCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateInput = {
@@ -438,6 +442,7 @@ export type UsuarioUncheckedCreateInput = {
   tareas?: Prisma.TareaUncheckedCreateNestedManyWithoutUsuarioInput
   examen?: Prisma.ExamenUncheckedCreateNestedManyWithoutUsuarioInput
   notificacion?: Prisma.NotificacionUncheckedCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUpdateInput = {
@@ -458,6 +463,7 @@ export type UsuarioUpdateInput = {
   tareas?: Prisma.TareaUpdateManyWithoutUsuarioNestedInput
   examen?: Prisma.ExamenUpdateManyWithoutUsuarioNestedInput
   notificacion?: Prisma.NotificacionUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateInput = {
@@ -479,6 +485,7 @@ export type UsuarioUncheckedUpdateInput = {
   tareas?: Prisma.TareaUncheckedUpdateManyWithoutUsuarioNestedInput
   examen?: Prisma.ExamenUncheckedUpdateManyWithoutUsuarioNestedInput
   notificacion?: Prisma.NotificacionUncheckedUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateManyInput = {
@@ -681,6 +688,20 @@ export type UsuarioUpdateOneRequiredWithoutNotificacionNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutNotificacionInput, Prisma.UsuarioUpdateWithoutNotificacionInput>, Prisma.UsuarioUncheckedUpdateWithoutNotificacionInput>
 }
 
+export type UsuarioCreateNestedOneWithoutRecuperacionesInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutRecuperacionesInput, Prisma.UsuarioUncheckedCreateWithoutRecuperacionesInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutRecuperacionesInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+}
+
+export type UsuarioUpdateOneRequiredWithoutRecuperacionesNestedInput = {
+  create?: Prisma.XOR<Prisma.UsuarioCreateWithoutRecuperacionesInput, Prisma.UsuarioUncheckedCreateWithoutRecuperacionesInput>
+  connectOrCreate?: Prisma.UsuarioCreateOrConnectWithoutRecuperacionesInput
+  upsert?: Prisma.UsuarioUpsertWithoutRecuperacionesInput
+  connect?: Prisma.UsuarioWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UsuarioUpdateToOneWithWhereWithoutRecuperacionesInput, Prisma.UsuarioUpdateWithoutRecuperacionesInput>, Prisma.UsuarioUncheckedUpdateWithoutRecuperacionesInput>
+}
+
 export type UsuarioCreateWithoutTareasInput = {
   nombre: string
   apellidoPaterno: string
@@ -698,6 +719,7 @@ export type UsuarioCreateWithoutTareasInput = {
   turno: $Enums.Turno
   examen?: Prisma.ExamenCreateNestedManyWithoutUsuarioInput
   notificacion?: Prisma.NotificacionCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutTareasInput = {
@@ -718,6 +740,7 @@ export type UsuarioUncheckedCreateWithoutTareasInput = {
   turno: $Enums.Turno
   examen?: Prisma.ExamenUncheckedCreateNestedManyWithoutUsuarioInput
   notificacion?: Prisma.NotificacionUncheckedCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutTareasInput = {
@@ -753,6 +776,7 @@ export type UsuarioUpdateWithoutTareasInput = {
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
   examen?: Prisma.ExamenUpdateManyWithoutUsuarioNestedInput
   notificacion?: Prisma.NotificacionUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutTareasInput = {
@@ -773,6 +797,7 @@ export type UsuarioUncheckedUpdateWithoutTareasInput = {
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
   examen?: Prisma.ExamenUncheckedUpdateManyWithoutUsuarioNestedInput
   notificacion?: Prisma.NotificacionUncheckedUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutExamenInput = {
@@ -792,6 +817,7 @@ export type UsuarioCreateWithoutExamenInput = {
   turno: $Enums.Turno
   tareas?: Prisma.TareaCreateNestedManyWithoutUsuarioInput
   notificacion?: Prisma.NotificacionCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutExamenInput = {
@@ -812,6 +838,7 @@ export type UsuarioUncheckedCreateWithoutExamenInput = {
   turno: $Enums.Turno
   tareas?: Prisma.TareaUncheckedCreateNestedManyWithoutUsuarioInput
   notificacion?: Prisma.NotificacionUncheckedCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutExamenInput = {
@@ -847,6 +874,7 @@ export type UsuarioUpdateWithoutExamenInput = {
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
   tareas?: Prisma.TareaUpdateManyWithoutUsuarioNestedInput
   notificacion?: Prisma.NotificacionUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutExamenInput = {
@@ -867,6 +895,7 @@ export type UsuarioUncheckedUpdateWithoutExamenInput = {
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
   tareas?: Prisma.TareaUncheckedUpdateManyWithoutUsuarioNestedInput
   notificacion?: Prisma.NotificacionUncheckedUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioCreateWithoutNotificacionInput = {
@@ -886,6 +915,7 @@ export type UsuarioCreateWithoutNotificacionInput = {
   turno: $Enums.Turno
   tareas?: Prisma.TareaCreateNestedManyWithoutUsuarioInput
   examen?: Prisma.ExamenCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioUncheckedCreateWithoutNotificacionInput = {
@@ -906,6 +936,7 @@ export type UsuarioUncheckedCreateWithoutNotificacionInput = {
   turno: $Enums.Turno
   tareas?: Prisma.TareaUncheckedCreateNestedManyWithoutUsuarioInput
   examen?: Prisma.ExamenUncheckedCreateNestedManyWithoutUsuarioInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedCreateNestedManyWithoutUsuarioInput
 }
 
 export type UsuarioCreateOrConnectWithoutNotificacionInput = {
@@ -941,6 +972,7 @@ export type UsuarioUpdateWithoutNotificacionInput = {
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
   tareas?: Prisma.TareaUpdateManyWithoutUsuarioNestedInput
   examen?: Prisma.ExamenUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUpdateManyWithoutUsuarioNestedInput
 }
 
 export type UsuarioUncheckedUpdateWithoutNotificacionInput = {
@@ -961,6 +993,105 @@ export type UsuarioUncheckedUpdateWithoutNotificacionInput = {
   turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
   tareas?: Prisma.TareaUncheckedUpdateManyWithoutUsuarioNestedInput
   examen?: Prisma.ExamenUncheckedUpdateManyWithoutUsuarioNestedInput
+  recuperaciones?: Prisma.RecuperacionPasswordUncheckedUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioCreateWithoutRecuperacionesInput = {
+  nombre: string
+  apellidoPaterno: string
+  apellidoMaterno: string
+  matricula: number
+  correo: string
+  password: string
+  activo?: boolean
+  fechaCreacion?: Date | string
+  rol?: $Enums.Rol
+  telefono: string
+  universidad: string
+  carrera: string
+  semestre: number
+  turno: $Enums.Turno
+  tareas?: Prisma.TareaCreateNestedManyWithoutUsuarioInput
+  examen?: Prisma.ExamenCreateNestedManyWithoutUsuarioInput
+  notificacion?: Prisma.NotificacionCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioUncheckedCreateWithoutRecuperacionesInput = {
+  id?: number
+  nombre: string
+  apellidoPaterno: string
+  apellidoMaterno: string
+  matricula: number
+  correo: string
+  password: string
+  activo?: boolean
+  fechaCreacion?: Date | string
+  rol?: $Enums.Rol
+  telefono: string
+  universidad: string
+  carrera: string
+  semestre: number
+  turno: $Enums.Turno
+  tareas?: Prisma.TareaUncheckedCreateNestedManyWithoutUsuarioInput
+  examen?: Prisma.ExamenUncheckedCreateNestedManyWithoutUsuarioInput
+  notificacion?: Prisma.NotificacionUncheckedCreateNestedManyWithoutUsuarioInput
+}
+
+export type UsuarioCreateOrConnectWithoutRecuperacionesInput = {
+  where: Prisma.UsuarioWhereUniqueInput
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutRecuperacionesInput, Prisma.UsuarioUncheckedCreateWithoutRecuperacionesInput>
+}
+
+export type UsuarioUpsertWithoutRecuperacionesInput = {
+  update: Prisma.XOR<Prisma.UsuarioUpdateWithoutRecuperacionesInput, Prisma.UsuarioUncheckedUpdateWithoutRecuperacionesInput>
+  create: Prisma.XOR<Prisma.UsuarioCreateWithoutRecuperacionesInput, Prisma.UsuarioUncheckedCreateWithoutRecuperacionesInput>
+  where?: Prisma.UsuarioWhereInput
+}
+
+export type UsuarioUpdateToOneWithWhereWithoutRecuperacionesInput = {
+  where?: Prisma.UsuarioWhereInput
+  data: Prisma.XOR<Prisma.UsuarioUpdateWithoutRecuperacionesInput, Prisma.UsuarioUncheckedUpdateWithoutRecuperacionesInput>
+}
+
+export type UsuarioUpdateWithoutRecuperacionesInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidoPaterno?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidoMaterno?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.IntFieldUpdateOperationsInput | number
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fechaCreacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
+  universidad?: Prisma.StringFieldUpdateOperationsInput | string
+  carrera?: Prisma.StringFieldUpdateOperationsInput | string
+  semestre?: Prisma.IntFieldUpdateOperationsInput | number
+  turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+  tareas?: Prisma.TareaUpdateManyWithoutUsuarioNestedInput
+  examen?: Prisma.ExamenUpdateManyWithoutUsuarioNestedInput
+  notificacion?: Prisma.NotificacionUpdateManyWithoutUsuarioNestedInput
+}
+
+export type UsuarioUncheckedUpdateWithoutRecuperacionesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidoPaterno?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidoMaterno?: Prisma.StringFieldUpdateOperationsInput | string
+  matricula?: Prisma.IntFieldUpdateOperationsInput | number
+  correo?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  fechaCreacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
+  universidad?: Prisma.StringFieldUpdateOperationsInput | string
+  carrera?: Prisma.StringFieldUpdateOperationsInput | string
+  semestre?: Prisma.IntFieldUpdateOperationsInput | number
+  turno?: Prisma.EnumTurnoFieldUpdateOperationsInput | $Enums.Turno
+  tareas?: Prisma.TareaUncheckedUpdateManyWithoutUsuarioNestedInput
+  examen?: Prisma.ExamenUncheckedUpdateManyWithoutUsuarioNestedInput
+  notificacion?: Prisma.NotificacionUncheckedUpdateManyWithoutUsuarioNestedInput
 }
 
 
@@ -972,12 +1103,14 @@ export type UsuarioCountOutputType = {
   tareas: number
   examen: number
   notificacion: number
+  recuperaciones: number
 }
 
 export type UsuarioCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tareas?: boolean | UsuarioCountOutputTypeCountTareasArgs
   examen?: boolean | UsuarioCountOutputTypeCountExamenArgs
   notificacion?: boolean | UsuarioCountOutputTypeCountNotificacionArgs
+  recuperaciones?: boolean | UsuarioCountOutputTypeCountRecuperacionesArgs
 }
 
 /**
@@ -1011,6 +1144,13 @@ export type UsuarioCountOutputTypeCountNotificacionArgs<ExtArgs extends runtime.
   where?: Prisma.NotificacionWhereInput
 }
 
+/**
+ * UsuarioCountOutputType without action
+ */
+export type UsuarioCountOutputTypeCountRecuperacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RecuperacionPasswordWhereInput
+}
+
 
 export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1031,6 +1171,7 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   tareas?: boolean | Prisma.Usuario$tareasArgs<ExtArgs>
   examen?: boolean | Prisma.Usuario$examenArgs<ExtArgs>
   notificacion?: boolean | Prisma.Usuario$notificacionArgs<ExtArgs>
+  recuperaciones?: boolean | Prisma.Usuario$recuperacionesArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["usuario"]>
 
@@ -1059,6 +1200,7 @@ export type UsuarioInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   tareas?: boolean | Prisma.Usuario$tareasArgs<ExtArgs>
   examen?: boolean | Prisma.Usuario$examenArgs<ExtArgs>
   notificacion?: boolean | Prisma.Usuario$notificacionArgs<ExtArgs>
+  recuperaciones?: boolean | Prisma.Usuario$recuperacionesArgs<ExtArgs>
   _count?: boolean | Prisma.UsuarioCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1068,6 +1210,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     tareas: Prisma.$TareaPayload<ExtArgs>[]
     examen: Prisma.$ExamenPayload<ExtArgs>[]
     notificacion: Prisma.$NotificacionPayload<ExtArgs>[]
+    recuperaciones: Prisma.$RecuperacionPasswordPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1428,6 +1571,7 @@ export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends runtime.
   tareas<T extends Prisma.Usuario$tareasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$tareasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TareaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   examen<T extends Prisma.Usuario$examenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$examenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExamenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notificacion<T extends Prisma.Usuario$notificacionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$notificacionArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificacionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  recuperaciones<T extends Prisma.Usuario$recuperacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Usuario$recuperacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RecuperacionPasswordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1889,6 +2033,30 @@ export type Usuario$notificacionArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.NotificacionScalarFieldEnum | Prisma.NotificacionScalarFieldEnum[]
+}
+
+/**
+ * Usuario.recuperaciones
+ */
+export type Usuario$recuperacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RecuperacionPassword
+   */
+  select?: Prisma.RecuperacionPasswordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RecuperacionPassword
+   */
+  omit?: Prisma.RecuperacionPasswordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RecuperacionPasswordInclude<ExtArgs> | null
+  where?: Prisma.RecuperacionPasswordWhereInput
+  orderBy?: Prisma.RecuperacionPasswordOrderByWithRelationInput | Prisma.RecuperacionPasswordOrderByWithRelationInput[]
+  cursor?: Prisma.RecuperacionPasswordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RecuperacionPasswordScalarFieldEnum | Prisma.RecuperacionPasswordScalarFieldEnum[]
 }
 
 /**

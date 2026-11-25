@@ -400,7 +400,8 @@ export const ModelName = {
   Usuario: 'Usuario',
   Tarea: 'Tarea',
   Examen: 'Examen',
-  Notificacion: 'Notificacion'
+  Notificacion: 'Notificacion',
+  RecuperacionPassword: 'RecuperacionPassword'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -416,7 +417,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "usuario" | "tarea" | "examen" | "notificacion"
+    modelProps: "usuario" | "tarea" | "examen" | "notificacion" | "recuperacionPassword"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -684,6 +685,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    RecuperacionPassword: {
+      payload: Prisma.$RecuperacionPasswordPayload<ExtArgs>
+      fields: Prisma.RecuperacionPasswordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RecuperacionPasswordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RecuperacionPasswordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload>
+        }
+        findFirst: {
+          args: Prisma.RecuperacionPasswordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RecuperacionPasswordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload>
+        }
+        findMany: {
+          args: Prisma.RecuperacionPasswordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload>[]
+        }
+        create: {
+          args: Prisma.RecuperacionPasswordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload>
+        }
+        createMany: {
+          args: Prisma.RecuperacionPasswordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.RecuperacionPasswordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload>
+        }
+        update: {
+          args: Prisma.RecuperacionPasswordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload>
+        }
+        deleteMany: {
+          args: Prisma.RecuperacionPasswordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RecuperacionPasswordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.RecuperacionPasswordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RecuperacionPasswordPayload>
+        }
+        aggregate: {
+          args: Prisma.RecuperacionPasswordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRecuperacionPassword>
+        }
+        groupBy: {
+          args: Prisma.RecuperacionPasswordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecuperacionPasswordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RecuperacionPasswordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RecuperacionPasswordCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -786,6 +853,18 @@ export const NotificacionScalarFieldEnum = {
 export type NotificacionScalarFieldEnum = (typeof NotificacionScalarFieldEnum)[keyof typeof NotificacionScalarFieldEnum]
 
 
+export const RecuperacionPasswordScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  expiracion: 'expiracion',
+  usado: 'usado',
+  fechaCreacion: 'fechaCreacion',
+  usuarioId: 'usuarioId'
+} as const
+
+export type RecuperacionPasswordScalarFieldEnum = (typeof RecuperacionPasswordScalarFieldEnum)[keyof typeof RecuperacionPasswordScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -841,6 +920,13 @@ export const NotificacionOrderByRelevanceFieldEnum = {
 } as const
 
 export type NotificacionOrderByRelevanceFieldEnum = (typeof NotificacionOrderByRelevanceFieldEnum)[keyof typeof NotificacionOrderByRelevanceFieldEnum]
+
+
+export const RecuperacionPasswordOrderByRelevanceFieldEnum = {
+  token: 'token'
+} as const
+
+export type RecuperacionPasswordOrderByRelevanceFieldEnum = (typeof RecuperacionPasswordOrderByRelevanceFieldEnum)[keyof typeof RecuperacionPasswordOrderByRelevanceFieldEnum]
 
 
 
@@ -1066,6 +1152,7 @@ export type GlobalOmitConfig = {
   tarea?: Prisma.TareaOmit
   examen?: Prisma.ExamenOmit
   notificacion?: Prisma.NotificacionOmit
+  recuperacionPassword?: Prisma.RecuperacionPasswordOmit
 }
 
 /* Types for Logging */

@@ -37,6 +37,7 @@
         tareas Tarea[]
         examen Examen[]
         notificacion Notificacion[]
+        recuperaciones RecuperacionPassword[]
     }
 
     enum Estado {
@@ -99,6 +100,16 @@
         examen Examen? @relation(fields: [examenId], references: [id])
     }
 
+    model RecuperacionPassword {
+        id Int @id @default(autoincrement())
+        token String @unique
+        expiracion DateTime
+        usado Boolean @default(false)
+        fechaCreacion DateTime @default(now())
+
+        usuarioId Int
+        usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+    }
 
 
 

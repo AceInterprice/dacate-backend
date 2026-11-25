@@ -61,3 +61,8 @@ export type Examen = Prisma.ExamenModel
  * 
  */
 export type Notificacion = Prisma.NotificacionModel
+/**
+ * Model RecuperacionPassword
+ * 
+ */
+export type RecuperacionPassword = Prisma.RecuperacionPasswordModel

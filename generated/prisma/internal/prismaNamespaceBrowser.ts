@@ -54,7 +54,8 @@ export const ModelName = {
   Usuario: 'Usuario',
   Tarea: 'Tarea',
   Examen: 'Examen',
-  Notificacion: 'Notificacion'
+  Notificacion: 'Notificacion',
+  RecuperacionPassword: 'RecuperacionPassword'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -136,6 +137,18 @@ export const NotificacionScalarFieldEnum = {
 export type NotificacionScalarFieldEnum = (typeof NotificacionScalarFieldEnum)[keyof typeof NotificacionScalarFieldEnum]
 
 
+export const RecuperacionPasswordScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  expiracion: 'expiracion',
+  usado: 'usado',
+  fechaCreacion: 'fechaCreacion',
+  usuarioId: 'usuarioId'
+} as const
+
+export type RecuperacionPasswordScalarFieldEnum = (typeof RecuperacionPasswordScalarFieldEnum)[keyof typeof RecuperacionPasswordScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -191,4 +204,11 @@ export const NotificacionOrderByRelevanceFieldEnum = {
 } as const
 
 export type NotificacionOrderByRelevanceFieldEnum = (typeof NotificacionOrderByRelevanceFieldEnum)[keyof typeof NotificacionOrderByRelevanceFieldEnum]
+
+
+export const RecuperacionPasswordOrderByRelevanceFieldEnum = {
+  token: 'token'
+} as const
+
+export type RecuperacionPasswordOrderByRelevanceFieldEnum = (typeof RecuperacionPasswordOrderByRelevanceFieldEnum)[keyof typeof RecuperacionPasswordOrderByRelevanceFieldEnum]
 
