@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import type { ApiResponse } from "@/types/response.type";
 import { obtenerUsuarioAutenticado } from "@/lib/auth";
 import { getTareas } from "@/services/tarea.service";
-import { Materia, Prioridad } from "@/generated/prisma/client";
+import { Prioridad } from "@/generated/prisma/client";
 import { z } from "zod";
 import { manejarError } from "@/lib/manejar-error";
 
@@ -18,10 +18,8 @@ export async function GET(req: NextRequest) {
 
         // Validar los filtros
         const filtros = z.object({
-            materia: z.enum(Materia).optional(),
             prioridad: z.enum(Prioridad).optional()
         }).safeParse({
-            ...(materiaParam && { materia: materiaParam }),
             ...(prioridadParam && { prioridad: prioridadParam })
         });
 
@@ -40,7 +38,6 @@ export async function GET(req: NextRequest) {
 
         const tareas = await getTareas(
             usuarioID,
-            filtros.data.materia,
             filtros.data.prioridad
         );
 
