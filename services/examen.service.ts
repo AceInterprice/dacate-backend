@@ -18,7 +18,7 @@ type ExamenActualizarPrisma = Omit<ExamenActualizar, "hora"> & {
 // Conversión de hora HH:mm a Date
 function convertirHora(hora: string): Date {
     const [horas, minutos] = hora.split(":").map(Number);
-    return new Date(1970, 0, 1, horas, minutos);
+    return new Date(Date.UTC(1970, 0, 1, horas, minutos));
 }
 
 // GET: Obtener todos los exámenes de un usuario

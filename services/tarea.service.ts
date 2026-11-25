@@ -10,7 +10,7 @@ export type CrearTarea = Omit<Tarea, "usuarioId" | "hora"> & {
 
 export async function crearTarea(data: CrearTarea, usuarioID: number) {
     const [horas, minutos] = data.hora.split(":").map(Number);
-    const hora = new Date(1970, 0, 1, horas, minutos);
+    const hora = new Date(Date.UTC(1970, 0, 1, horas, minutos));
 
     const tarea = await prisma.tarea.create({
         data: {
@@ -67,7 +67,7 @@ export async function actualizarTarea(
         if (data.hora) {
             const [horas, minutos] = data.hora.split(":").map(Number);
 
-            datosActualizados.hora = new Date(1970, 0, 1, horas, minutos);
+            datosActualizados.hora = new Date(Date.UTC(1970, 0, 1, horas, minutos));
         }
 
         const tarea = await prisma.tarea.update({
